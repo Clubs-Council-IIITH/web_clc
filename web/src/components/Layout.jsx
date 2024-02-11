@@ -98,7 +98,7 @@ function Drawer({ drawerOpen, onCloseDrawer }) {
   
   // nav items that everybody can see
   const publicItems = (
-    <List disablePadding sx={{ p: 1, pt: 1, display: "inherit", flexDirection: "inherit", alignItems: "center", gap: "20px" }} >
+    <List disablePadding sx={{ p: 1, pt: 1, display: "inherit", flexDirection: "inherit", alignItems: "center", width:"100%", gap: "20px" }} >
       <DrawerItem
         title="home"
         path="/"

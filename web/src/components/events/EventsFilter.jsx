@@ -112,7 +112,7 @@ export default function EventsFilter({ name, club, state }) {
             <Button
               type="submit"
               variant="contained"
-              sx={{ mr: 1}}
+              sx={{ mr: 1, color: "white"}}
             >
               Search
             </Button>

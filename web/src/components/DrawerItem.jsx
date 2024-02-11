@@ -36,6 +36,7 @@ export default function DrawerItem({ title, path="", icon, onClick=null }) {
         ...theme.typography.body2,
         position: "relative",
         height: "max-content",
+        width: "100%",
         display: "flex",
         flexDirection: "column",
         textTransform: "capitalize",

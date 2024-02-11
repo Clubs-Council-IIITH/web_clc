@@ -15,18 +15,18 @@ const PRIMARY_LIGHT = {
   darker: "#04297A",
 };
 const SECONDARY = {
-  lighter: "#C4CDD5",
-  light: "#919EAB",
-  main: "#637381",
-  dark: "#454F5B",
-  darker: "#212B36",
-};
-const INFO = {
   lighter: "#FFF7CD",
   light: "#FFE16A",
   main: "#FFC107",
   dark: "#B78103",
   darker: "#7A4F01",
+};
+const INFO = {
+  lighter: "#C4CDD5",
+  light: "#919EAB",
+  main: "#637381",
+  dark: "#454F5B",
+  darker: "#212B36",
 };
 const SUCCESS = {
   lighter: "#E9FCD4",
@@ -112,14 +112,14 @@ const COMMON = {
 const palette = {
   light: {
     ...COMMON,
-    primary: { ...PRIMARY_LIGHT, contrastText: "#fff" },
+    primary: { ...PRIMARY_LIGHT, contrastText: "#00000" },
     mode: "light",
-    text: { primary: "#00000", secondary: GREY[700], disabled: GREY[500], opposite: "#fefefe", extra: "#FF4842" },
-    background: { paper: "#d2f3d4", default: "#E9FCD4", neutral: GREY[600], opposite: "#02c200" },
+    text: { primary: "#00000", secondary: GREY[700], disabled: GREY[500], opposite: "#00000", extra: "#FF4842" },
+    background: { paper: "#FFEFDAFF", default: "#FCF6F5FF", neutral: GREY[600], opposite: "#FFEFBAFF" },
     action: { active: GREY[600], ...COMMON.action },
     accent: PRIMARY_LIGHT.main,
   },
-  dark: {
+  dark: { 
     ...COMMON,
     primary: { ...PRIMARY_LIGHT, contrastText: "#fff" }, // TODO: define PRIMARY_DARK palette
     mode: "dark",

@@ -22,4 +22,4 @@ FILE_PATH="web/next.config.js"
 # Update the IP address in the file
 sed -Ei "s|http://10\.[0-9]+\.[0-9]+\.[0-9]+|https://clubs.iiit.ac.in|g" $FILE_PATH
 
-docker compose -p nss-web up --build
+docker compose -p clc-web up --build
