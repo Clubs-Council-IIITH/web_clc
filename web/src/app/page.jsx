@@ -1,7 +1,7 @@
 import { getClient } from "gql/client";
 import { GET_CLUB } from "gql/queries/clubs";
 
-import { Box, Typography, Card } from "@mui/material";
+import { Box, Card } from "@mui/material";
 
 import ClubBanner from "components/clubs/ClubBanner";
 import ClubInfo from "components/clubs/ClubInfo";

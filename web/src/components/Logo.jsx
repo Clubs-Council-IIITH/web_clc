@@ -19,13 +19,13 @@ export default function Logo({ isDesktop = true }) {
         priority
         src={BodyLogo}
         alt="Clubs Council"
-        width={100}
-        height={30}
+        width={70}
+        height={70}
         style={{
-          marginLeft: isDesktop ? 15 : 25,
-          marginTop: isDesktop ? 25 : 20,
+          marginLeft: isDesktop ? 15 : 60,
+          marginTop: 10,
           marginBottom: isDesktop ? 0 : 20,
-          }}
+        }}
       />
     </Link>
   );

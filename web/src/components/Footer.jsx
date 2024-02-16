@@ -62,10 +62,9 @@ export default function Footer({ club = {} }) {
           <Box>
             <Image
               src={BodyLogo}
-              alt={"NSS"}
-              height={30}
-              width={100}
-              style={{ filter: "invert(1)" }}
+              alt={"CLC"}
+              height={70}
+              width={70}
             />
           </Box>
         </Grid>
