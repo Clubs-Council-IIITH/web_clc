@@ -31,13 +31,13 @@ const DRAWER_HEIGHT = 70;
 const DRAWER_WIDTH = 240;
 
 // bug report external link  :: To change
-export const BUG_REPORT_URL = "https://forms.office.com/r/zBLuvbBPXZ";
+export const BUG_REPORT_URL = "https://help.iiit.ac.in/projects/web-administration/issues/new";
 
 
 function Bar({ onOpenDrawer }) {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
-  
+
   return (
     <AppBar
       sx={{
@@ -47,7 +47,7 @@ function Bar({ onOpenDrawer }) {
           width: "100%",
         },
       }}
-      >
+    >
       <Toolbar
         sx={{
           height: BAR_HEIGHT_MOBILE,
@@ -87,18 +87,18 @@ function Bar({ onOpenDrawer }) {
 function Drawer({ drawerOpen, onCloseDrawer }) {
   const theme = useTheme();
   const pathname = usePathname();
-  
+
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
-  
+
   useEffect(() => {
     if (drawerOpen) onCloseDrawer();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
-  
-  
+
+
   // nav items that everybody can see
   const publicItems = (
-    <List disablePadding sx={{ p: 1, pt: 1, display: "inherit", flexDirection: "inherit", alignItems: "center", width:"100%", gap: "20px" }} >
+    <List disablePadding sx={{ p: 1, pt: 1, display: "inherit", flexDirection: "inherit", alignItems: "center", width: "100%", gap: "20px" }} >
       <DrawerItem
         title="home"
         path="/"
@@ -121,9 +121,9 @@ function Drawer({ drawerOpen, onCloseDrawer }) {
       />
     </List>
   );
-  
-  
-  
+
+
+
   const LoginItems = (
     <List disablePadding sx={{ p: 1, ml: 0.5 }}>
       <DrawerItem
@@ -139,18 +139,18 @@ function Drawer({ drawerOpen, onCloseDrawer }) {
         <Box sx={{ px: 2.5, display: "flex", justifyContent: "space-between" }}>
           <Logo />
           <Box sx={{ px: 2.5, display: "flex", justifyContent: "space-between" }}>
-          {publicItems}
-          <Stack
-            direction="row"
-            alignItems="center"
-            spacing={{
-              xs: 0.5,
-              sm: 1,
-            }}
-          >
-            {/* <AccountPopover /> */}
-          {LoginItems}
-          </Stack>
+            {publicItems}
+            <Stack
+              direction="row"
+              alignItems="center"
+              spacing={{
+                xs: 0.5,
+                sm: 1,
+              }}
+            >
+              {/* <AccountPopover /> */}
+              {LoginItems}
+            </Stack>
           </Box>
         </Box>
       ) : (
@@ -158,7 +158,7 @@ function Drawer({ drawerOpen, onCloseDrawer }) {
           px: 2.5,
           py: 2,
           // height: "max-content",
-            backgroundColor: theme.palette.background.opposite,
+          backgroundColor: theme.palette.background.opposite,
         }}>
           <Box display="flex" justifyContent="space-between">
             <Logo isDesktop={false} />
