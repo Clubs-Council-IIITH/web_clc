@@ -51,7 +51,7 @@ export default function EventDetails({ event, showCode = false }) {
             </Typography>
           </Box>
 
-          <Typography variant="h3" paragraph mt={1} mb={0}  color="text.extra">
+          <Typography variant="h3" paragraph mt={1} mb={0} color="text.extra">
             {event.name}
           </Typography>
           {showCode ? (

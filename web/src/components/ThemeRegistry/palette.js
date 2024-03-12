@@ -114,12 +114,23 @@ const palette = {
     ...COMMON,
     primary: { ...PRIMARY_LIGHT, contrastText: "#00000" },
     mode: "light",
-    text: { primary: "#00000", secondary: GREY[700], disabled: GREY[500], opposite: "#00000", extra: "#FF4842" },
-    background: { paper: "#FFEFDAFF", default: "#FCF6F5FF", neutral: GREY[600], opposite: "#FFEFBAFF" },
+    text: {
+      primary: "#00000",
+      secondary: GREY[700],
+      disabled: GREY[500],
+      opposite: "#00000",
+      extra: "#FF4842",
+    },
+    background: {
+      paper: "#FFEFDAFF",
+      default: "#FCF6F5FF",
+      neutral: GREY[600],
+      opposite: "#FFEFBAFF",
+    },
     action: { active: GREY[600], ...COMMON.action },
     accent: PRIMARY_LIGHT.main,
   },
-  dark: { 
+  dark: {
     ...COMMON,
     primary: { ...PRIMARY_LIGHT, contrastText: "#fff" }, // TODO: define PRIMARY_DARK palette
     mode: "dark",

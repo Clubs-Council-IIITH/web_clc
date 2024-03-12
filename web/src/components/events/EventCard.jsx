@@ -16,7 +16,14 @@ export default function EventCard({
   clubid,
 }) {
   return (
-    <Card sx={{ borderRadius: 2, width: "80%", ml: "10%", boxShadow: "0px 4px 8px rgba(7, 7, 7, 0.1)"}}>
+    <Card
+      sx={{
+        borderRadius: 2,
+        width: "80%",
+        ml: "10%",
+        boxShadow: "0px 4px 8px rgba(7, 7, 7, 0.1)",
+      }}
+    >
       <CardActionArea component={Link} href={`/events/${_id}`}>
         <Box sx={{ pt: "80%", position: "relative" }}>
           {poster ? (
@@ -27,7 +34,12 @@ export default function EventCard({
         </Box>
 
         <Stack spacing={1} sx={{ p: 3 }}>
-          <Typography variant="subtitle2" fontSize={16} noWrap color={"text.extra"}>
+          <Typography
+            variant="subtitle2"
+            fontSize={16}
+            noWrap
+            color={"text.extra"}
+          >
             {name}
           </Typography>
           <Typography variant="caption" noWrap>

@@ -18,7 +18,7 @@ export function getActive(path, pathname) {
   return pathname.startsWith(path.split("?")[0]);
 }
 
-export default function DrawerItem({ title, path="", icon, onClick=null }) {
+export default function DrawerItem({ title, path = "", icon, onClick = null }) {
   const theme = useTheme();
   const pathname = usePathname();
 
@@ -26,7 +26,6 @@ export default function DrawerItem({ title, path="", icon, onClick=null }) {
 
   const externalLink = path != "" ? isExternalLink(path) : false;
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
-
 
   return (
     <ListItemButton
@@ -40,8 +39,8 @@ export default function DrawerItem({ title, path="", icon, onClick=null }) {
         display: "flex",
         flexDirection: "column",
         textTransform: "capitalize",
-        paddingLeft: isDesktop? theme.spacing(1.5) : theme.spacing(3),
-        paddingRight: isDesktop? theme.spacing(1.5) : theme.spacing(3),
+        paddingLeft: isDesktop ? theme.spacing(1.5) : theme.spacing(3),
+        paddingRight: isDesktop ? theme.spacing(1.5) : theme.spacing(3),
         marginBottom: theme.spacing(0.5),
         color: theme.palette.text.opposite,
         borderRadius: 1,
@@ -49,19 +48,15 @@ export default function DrawerItem({ title, path="", icon, onClick=null }) {
         ...(active && {
           ...theme.typography.subtitle2,
           color: theme.palette.accent,
-          backgroundColor: alpha(
-            theme.palette.accent,
-            0.16
-          ),
+          backgroundColor: alpha(theme.palette.accent, 0.16),
         }),
       }}
-      {
-        ...(onClick ? { onClick: () => onClick(pathname) }
-          : {
+      {...(onClick
+        ? { onClick: () => onClick(pathname) }
+        : {
             component: Link,
             href: path,
-          })
-        }
+          })}
       {...(externalLink
         ? {
             rel: "noopener noreferrer",
@@ -89,7 +84,7 @@ export default function DrawerItem({ title, path="", icon, onClick=null }) {
             display="flex"
             alignItems="center"
             justifyContent="space-between"
-              >
+          >
             {title}
             {externalLink && <Icon variant="link" />}
           </Box>
