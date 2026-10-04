@@ -96,7 +96,7 @@ function DropZone({ files, onDrop, type, maxFiles, maxSize }) {
       >
         <input {...getInputProps()} />
 
-        <Box p={3}>
+        <Box sx={{ p: 3 }}>
           <Typography gutterBottom variant="h5">
             Select (or drop) file
           </Typography>

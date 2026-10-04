@@ -42,10 +42,12 @@ export default function ImageMasonry({
             >
               <Image
                 src={url}
+                alt={`Gallery image ${id}`}
                 width={0}
                 height={0}
                 sizes="100vw"
                 style={{ width: "100%", height: "100%" }}
+                priority={id === 0}
               />
             </CardActionArea>
           </Card>

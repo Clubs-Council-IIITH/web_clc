@@ -9,8 +9,11 @@ export const metadata = {
 };
 
 export default async function Gallery({ searchParams, limit = undefined }) {
-  const dir = path.resolve(__dirname, "../../../../public/assets/gallery");
-  const files = fs.readdirSync(dir).map((file) => `/assets/gallery/${file}`);
+  const resolvedParams = await searchParams;
+  const dir = path.join(process.cwd(), "public/assets/gallery");
+  const files = fs.existsSync(dir)
+    ? fs.readdirSync(dir).map((file) => `/assets/gallery/${file}`)
+    : [];
 
   return (
     <>
@@ -21,7 +24,7 @@ export default async function Gallery({ searchParams, limit = undefined }) {
             linkPrefix="/gallery?img="
             limit={limit}
           />
-          <ImageModal images={files} id={searchParams?.img} />
+          <ImageModal images={files} id={resolvedParams?.img} />
         </>
       ) : (
         <center>

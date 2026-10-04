@@ -25,71 +25,75 @@ export default async function MemberCard({ uid, poc, roles }) {
       raised={false}
       sx={{ backgroundColor: "inherit", border: "none", boxShadow: 0 }}
     >
-      <CardActionArea
-        // disabled // TODO: Link to public user profile
-        component={Link}
+      <Link
         href={`/profile/${uid}`}
-        sx={{
-          p: 2,
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          textAlign: "left",
-        }}
+        style={{ textDecoration: "none", color: "inherit", display: "block" }}
       >
-        <UserImage
-          image={user.img}
-          name={user.firstName}
-          gender={user.gender}
-          width={150}
-          height={150}
-        />
-        <Typography
-          textAlign="center"
-          variant="subtitle1"
-          textTransform="capitalize"
-          mt={3}
-          color={"text.extra"}
+        <CardActionArea
+          sx={{
+            p: 2,
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            textAlign: "left",
+          }}
         >
-          {`${user.firstName} ${user.lastName}`.toLowerCase()}
-        </Typography>
+          <UserImage
+            image={user.img}
+            name={user.firstName}
+            gender={user.gender}
+            width={150}
+            height={150}
+          />
+          <Typography
+            variant="subtitle1"
+            color={"text.extra"}
+            sx={{
+              textAlign: "center",
+              textTransform: "capitalize",
+              mt: 3,
+            }}
+          >
+            {`${user.firstName} ${user.lastName}`.toLowerCase()}
+          </Typography>
 
-        {poc ? (
-          <Box display="flex" alignItems="center" mt={1}>
-            <Icon
-              variant="contact-emergency-rounded"
-              color="error.main"
-              mr={1}
-            />
-            <Typography variant="subtitle2" fontWeight={400}>
-              Point of Contact
-            </Typography>
-          </Box>
-        ) : null}
+          {poc ? (
+            <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
+              <Icon
+                variant="contact-emergency-rounded"
+                color="error.main"
+                mr={1}
+              />
+              <Typography variant="subtitle2" fontWeight={400}>
+                Point of Contact
+              </Typography>
+            </Box>
+          ) : null}
 
-        {roles?.map((role, key) => (
-          <Box key={key} mt={0.5} textAlign="center">
-            <Typography
-              variant="body2"
-              sx={{ display: "inline-block", color: "text.secondary" }}
-            >
-              {role.name}
-            </Typography>
-            <Typography
-              variant="body2"
-              color="grey.400"
-              sx={{
-                display: "inline-block",
-              }}
-              ml={0.5}
-            >
-              ({role.startYear} - {role.endYear || "present"})
-            </Typography>
-          </Box>
-        ))}
-      </CardActionArea>
+          {roles?.map((role, key) => (
+            <Box key={key} sx={{ mt: 0.5, textAlign: "center" }}>
+              <Typography
+                variant="body2"
+                sx={{ display: "inline-block", color: "text.secondary" }}
+              >
+                {role.name}
+              </Typography>
+              <Typography
+                variant="body2"
+                color="grey.400"
+                sx={{
+                  display: "inline-block",
+                }}
+                ml={0.5}
+              >
+                ({role.startYear} - {role.endYear || "present"})
+              </Typography>
+            </Box>
+          ))}
+        </CardActionArea>
+      </Link>
     </Card>
   );
 }
