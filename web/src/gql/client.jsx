@@ -10,15 +10,17 @@ const makeClient = () => {
     url: GRAPHQL_ENDPOINT,
     preferGetMethod: false,
     exchanges: [cacheExchange, fetchExchange],
-    fetchOptions: async () => {
+    fetch: async (input, init) => {
       const cookieStore = await cookies();
-      return {
+      return fetch(input, {
+        ...init,
         cache: "no-store",
         credentials: "include",
         headers: {
+          ...init?.headers,
           cookie: cookieStore.toString(),
         },
-      };
+      });
     },
   });
 };
