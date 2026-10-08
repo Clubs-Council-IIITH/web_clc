@@ -14,28 +14,34 @@ export default async function ClubButton({ clubid }) {
 
   return (
     <Box>
-      <Button
-        component={Link}
+      <Link
         href={`/clubs/${clubid}`}
-        variant="outlined"
-        color="secondary"
-        display="flex"
-        alignItems="center"
+        style={{
+          textDecoration: "none",
+          color: "inherit",
+          display: "inline-block",
+        }}
       >
-        <ClubLogo
-          name={club.name}
-          logo={club.logo}
-          width={18}
-          height={18}
-          mr={1}
-          style={{
-            border: "2px solid lightgray",
-          }}
-        />
-        <Typography variant="body2" color="text.primary">
-          {club.name}
-        </Typography>
-      </Button>
+        <Button
+          variant="outlined"
+          color="secondary"
+          sx={{ display: "flex", alignItems: "center" }}
+        >
+          <ClubLogo
+            name={club.name}
+            logo={club.logo}
+            width={18}
+            height={18}
+            mr={1}
+            style={{
+              border: "2px solid lightgray",
+            }}
+          />
+          <Typography variant="body2" color="text.primary">
+            {club.name}
+          </Typography>
+        </Button>
+      </Link>
     </Box>
   );
 }

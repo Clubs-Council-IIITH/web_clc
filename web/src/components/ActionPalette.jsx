@@ -7,44 +7,43 @@ export default function ActionPalette({
   rightProps = [],
 }) {
   return (
-    <Box width="100%">
+    <Box sx={{ width: "100%" }}>
       <Grid
         container
         direction={{ xs: "column-reverse", md: "row" }}
-        alignItems="center"
-        justifyContent="space-between"
         spacing={2}
+        sx={{ alignItems: "center", justifyContent: "space-between" }}
       >
         <Grid
-          item
           container
-          xs={12}
-          md={6}
+          size={{ xs: 12, md: 6 }}
           spacing={1}
-          justifyContent={{ xs: "center", md: "flex-start" }}
-          alignItems="center"
-          my={0.5}
+          sx={{
+            my: 0.5,
+            justifyContent: { xs: "center", md: "flex-start" },
+            alignItems: "center",
+          }}
         >
           {left.map((Component, key) => (
-            <Grid item xs="auto">
-              <Component {...leftProps[key]} key={key} />
+            <Grid key={key} size="auto">
+              <Component {...leftProps[key]} />
             </Grid>
           ))}
         </Grid>
 
         <Grid
-          item
           container
-          xs={12}
-          md={6}
+          size={{ xs: 12, md: 6 }}
           spacing={1}
-          justifyContent={{ xs: "center", md: "flex-end" }}
-          alignItems="center"
-          my={0.5}
+          sx={{
+            my: 0.5,
+            justifyContent: { xs: "center", md: "flex-end" },
+            alignItems: "center",
+          }}
         >
           {right.map((Component, key) => (
-            <Grid item>
-              <Component {...rightProps[key]} key={key} />
+            <Grid key={key}>
+              <Component {...rightProps[key]} />
             </Grid>
           ))}
         </Grid>

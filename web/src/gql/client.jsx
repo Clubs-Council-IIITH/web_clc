@@ -8,16 +8,19 @@ const GRAPHQL_ENDPOINT =
 const makeClient = () => {
   return createClient({
     url: GRAPHQL_ENDPOINT,
+    preferGetMethod: false,
     exchanges: [cacheExchange, fetchExchange],
-    fetchOptions: {
-      cache: "no-store",
-      credentials: "include",
-      headers: {
-        cookie: cookies()
-          .getAll()
-          .map((cookie) => `${cookie.name}=${cookie.value}`)
-          .join("; "),
-      },
+    fetch: async (input, init) => {
+      const cookieStore = await cookies();
+      return fetch(input, {
+        ...init,
+        cache: "no-store",
+        credentials: "include",
+        headers: {
+          ...init?.headers,
+          cookie: cookieStore.toString(),
+        },
+      });
     },
   });
 };

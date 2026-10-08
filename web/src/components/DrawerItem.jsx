@@ -81,9 +81,11 @@ export default function DrawerItem({ title, path = "", icon, onClick = null }) {
         disableTypography
         primary={
           <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="space-between"
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
           >
             {title}
             {externalLink && <Icon variant="link" />}

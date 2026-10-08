@@ -18,11 +18,13 @@ export default function ClubInfo({
   return (
     <>
       <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        mt={3}
-        mb={2}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          mt: 3,
+          mb: 2,
+        }}
       >
         <ClubLogo
           name={name}
@@ -46,12 +48,11 @@ export default function ClubInfo({
           ) : null}
         </Box>
       </Box>
-      <Box pt={2}>
+      <Box sx={{ pt: 2 }}>
         <Typography
           variant="body1"
-          mx={1}
           color="text.secondary"
-          sx={{ whiteSpace: "pre-wrap" }}
+          sx={{ whiteSpace: "pre-wrap", mx: 1 }}
         >
           {description}
         </Typography>

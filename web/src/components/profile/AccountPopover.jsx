@@ -13,6 +13,7 @@ import {
   Typography,
   Stack,
   MenuItem,
+  MenuList,
   Avatar,
   IconButton,
   Popover,
@@ -118,15 +119,17 @@ export default function AccountPopover() {
         onClose={handleClose}
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         transformOrigin={{ vertical: "top", horizontal: "right" }}
-        PaperProps={{
-          sx: {
-            p: 0,
-            mt: 1.5,
-            ml: 0.75,
-            width: 180,
-            "& .MuiMenuItem-root": {
-              typography: "body2",
-              borderRadius: 0.75,
+        slotProps={{
+          paper: {
+            sx: {
+              p: 0,
+              mt: 1.5,
+              ml: 0.75,
+              width: 180,
+              "& .MuiMenuItem-root": {
+                typography: "body2",
+                borderRadius: 0.75,
+              },
             },
           },
         }}
@@ -147,37 +150,39 @@ export default function AccountPopover() {
               </Typography>
             </Box>
 
-            {[...AUTHENTICATED_MENU_OPTIONS, ...COMMON_MENU_OPTIONS].length >
-            0 ? (
-              <>
-                <Divider sx={{ borderStyle: "dashed" }} />
+            <MenuList>
+              {[...AUTHENTICATED_MENU_OPTIONS, ...COMMON_MENU_OPTIONS].length >
+              0 ? (
+                <>
+                  <Divider sx={{ borderStyle: "dashed" }} />
 
-                <Stack sx={{ p: 1 }}>
-                  {[...AUTHENTICATED_MENU_OPTIONS, ...COMMON_MENU_OPTIONS].map(
-                    (option) => (
-                      <MenuItem
-                        component={Link}
-                        key={option.label}
-                        href={option.url}
-                      >
-                        <Icon variant={option.icon} sx={{ mr: 2 }} />
-                        {option.label}
-                      </MenuItem>
-                    ),
-                  )}
-                </Stack>
-              </>
-            ) : null}
+                  <Stack sx={{ p: 1 }}>
+                    {[...AUTHENTICATED_MENU_OPTIONS, ...COMMON_MENU_OPTIONS].map(
+                      (option) => (
+                        <MenuItem
+                          component={Link}
+                          key={option.label}
+                          href={option.url}
+                        >
+                          <Icon variant={option.icon} sx={{ mr: 2 }} />
+                          {option.label}
+                        </MenuItem>
+                      ),
+                    )}
+                  </Stack>
+                </>
+              ) : null}
 
-            <Divider sx={{ borderStyle: "dashed" }} />
+              <Divider sx={{ borderStyle: "dashed" }} />
 
-            <MenuItem onClick={() => logout(pathname)} sx={{ m: 1 }}>
-              Logout
-            </MenuItem>
+              <MenuItem onClick={() => logout(pathname)} sx={{ m: 1 }}>
+                Logout
+              </MenuItem>
+            </MenuList>
           </>
         ) : (
           // else show login button
-          <>
+          <MenuList>
             {COMMON_MENU_OPTIONS.length > 0 ? (
               <>
                 <Stack sx={{ p: 1 }}>
@@ -196,7 +201,7 @@ export default function AccountPopover() {
             <MenuItem onClick={() => login(pathname)} sx={{ m: 1 }}>
               Login
             </MenuItem>
-          </>
+          </MenuList>
         )}
       </Popover>
     </>

@@ -14,25 +14,22 @@ import { EditUser } from "components/profile/UserActions";
 import UserMemberships from "components/profile/UserMemberships";
 
 export async function generateMetadata({ params }, parent) {
-  const { id } = params;
+  const { id } = await params;
 
-  const { data: { userProfile, userMeta } = {} } = await getClient().query(
-    GET_USER_PROFILE,
-    {
-      userInput: {
-        uid: id,
-      },
+  const { data } = await getClient().query(GET_USER_PROFILE, {
+    userInput: {
+      uid: id,
     },
-  );
-  const user = { ...userMeta, ...userProfile };
+  });
+  const user = { ...(data?.userMeta || {}), ...(data?.userProfile || {}) };
 
   return {
-    title: `${user.firstName} ${user.lastName}`,
+    title: user.firstName ? `${user.firstName} ${user.lastName}` : "Profile",
   };
 }
 
 export default async function Profile({ params }) {
-  const { id } = params;
+  const { id } = await params;
 
   // get currently logged in user
   const {
@@ -41,7 +38,7 @@ export default async function Profile({ params }) {
   const currentUser = { ...currentUserMeta, ...currentUserProfile };
 
   // get target user
-  const { data: { userProfile, userMeta } = {} } = await getClient().query(
+  const { data: targetData } = await getClient().query(
     GET_USER_PROFILE,
     {
       userInput: {
@@ -49,7 +46,7 @@ export default async function Profile({ params }) {
       },
     },
   );
-  const user = { ...userMeta, ...userProfile };
+  const user = { ...(targetData?.userMeta || {}), ...(targetData?.userProfile || {}) };
 
   // if user is a club, display the club's logo as profile picture
   let club = null;
@@ -88,12 +85,12 @@ export default async function Profile({ params }) {
       (currentUser?.uid === user.uid && user.role !== "club") ? (
         <ActionPalette right={[EditUser]} />
       ) : null}
-      <Grid container spacing={2} mt={4}>
-        <Grid item xs={12}>
+      <Grid container spacing={2} sx={{ mt: 4 }}>
+        <Grid size={{ xs: 12 }}>
           <Stack
             direction={{ xs: "column", lg: "row" }}
-            alignItems="center"
             spacing={4}
+            sx={{ alignItems: "center" }}
           >
             {club ? (
               <ClubLogo
@@ -114,9 +111,9 @@ export default async function Profile({ params }) {
             <Stack direction="column" spacing={1}>
               <Typography
                 variant="h2"
-                wordWrap="break-word"
-                textAlign={{ xs: "center", lg: "left" }}
                 sx={{
+                  wordWrap: "break-word",
+                  textAlign: { xs: "center", lg: "left" },
                   fontSize: { xs: 25, lg: 38 },
                 }}
               >
@@ -125,9 +122,9 @@ export default async function Profile({ params }) {
               <Typography
                 variant="body1"
                 color="text.secondary"
-                fontFamily="monospace"
-                textAlign={{ xs: "center", lg: "left" }}
                 sx={{
+                  fontFamily: "monospace",
+                  textAlign: { xs: "center", lg: "left" },
                   fontSize: { xs: 14, lg: 20 },
                 }}
               >
@@ -137,14 +134,14 @@ export default async function Profile({ params }) {
           </Stack>
         </Grid>
 
-        <Grid item container xs spacing={2} mt={5}>
+        <Grid container size={{ xs: 12, lg: "grow" }} spacing={2} sx={{ mt: 5 }}>
           <UserDetails user={user} />
         </Grid>
 
-        <Grid item xs={12} lg={9} mt={{ xs: 2, lg: 5 }}>
+        <Grid size={{ xs: 12, lg: 9 }} sx={{ mt: { xs: 2, lg: 5 } }}>
           {user?.batch?.toLowerCase()?.includes("2k") ? ( // hacky way to exclude faculty and staff from rendering memberships
             <Stack direction="column" spacing={2}>
-              <Typography variant="subtitle2" textTransform="uppercase">
+              <Typography variant="subtitle2" sx={{ textTransform: "uppercase" }}>
                 Memberships
               </Typography>
               <UserMemberships rows={memberships} />

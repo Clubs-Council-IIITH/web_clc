@@ -11,12 +11,12 @@ export default async function UserDetails({ user }) {
   const currentUser = { ...currentUserMeta, ...currentUserProfile };
 
   return (
-    <Stack direction="column" spacing={3} mx={2}>
+    <Stack direction="column" spacing={3} sx={{ mx: 2 }}>
       <Box>
-        <Typography variant="subtitle2" textTransform="uppercase" gutterBottom>
+        <Typography variant="subtitle2" gutterBottom sx={{ textTransform: "uppercase" }}>
           User ID
         </Typography>
-        <Typography fontWeight={400} fontFamily="monospace">
+        <Typography sx={{ fontWeight: 400, fontFamily: "monospace" }}>
           {user.uid}
         </Typography>
       </Box>
@@ -27,12 +27,12 @@ export default async function UserDetails({ user }) {
             <Box>
               <Typography
                 variant="subtitle2"
-                textTransform="uppercase"
                 gutterBottom
+                sx={{ textTransform: "uppercase" }}
               >
                 Batch
               </Typography>
-              <Typography fontWeight={400} textTransform="uppercase">
+              <Typography sx={{ fontWeight: 400, textTransform: "uppercase" }}>
                 {user.batch} · {user.stream}
               </Typography>
             </Box>
@@ -45,12 +45,12 @@ export default async function UserDetails({ user }) {
                 <Box>
                   <Typography
                     variant="subtitle2"
-                    textTransform="uppercase"
                     gutterBottom
+                    sx={{ textTransform: "uppercase" }}
                   >
                     Roll Number
                   </Typography>
-                  <Typography fontWeight={400}>
+                  <Typography sx={{ fontWeight: 400 }}>
                     {user.rollno || "Unknown"}
                   </Typography>
                 </Box>
@@ -58,12 +58,12 @@ export default async function UserDetails({ user }) {
               <Box>
                 <Typography
                   variant="subtitle2"
-                  textTransform="uppercase"
                   gutterBottom
+                  sx={{ textTransform: "uppercase" }}
                 >
                   Phone Number
                 </Typography>
-                <Typography fontWeight={400}>
+                <Typography sx={{ fontWeight: 400 }}>
                   {user.phone || "Unknown"}
                 </Typography>
               </Box>

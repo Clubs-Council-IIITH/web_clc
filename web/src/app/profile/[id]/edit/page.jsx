@@ -12,10 +12,10 @@ export const metadata = {
 };
 
 export default async function EditProfile({ params }) {
-  const { id } = params;
+  const { id } = await params;
 
   // get target user
-  const { data: { userProfile, userMeta } = {} } = await getClient().query(
+  const { data } = await getClient().query(
     GET_USER_PROFILE,
     {
       userInput: {
@@ -23,7 +23,7 @@ export default async function EditProfile({ params }) {
       },
     },
   );
-  const user = { ...userMeta, ...userProfile };
+  const user = { ...(data?.userMeta || {}), ...(data?.userProfile || {}) };
   // console.log(user);
 
   // if user is a club, redirect to club edit page
